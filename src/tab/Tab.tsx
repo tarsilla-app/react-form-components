@@ -37,17 +37,16 @@ const tabCss = css`
 `;
 
 const selectedTab = css`
-  color: var(--selected-color) !important;
-  background-color: var(--selected-background-color) !important;
-  border: 1px solid var(--selected-color) !important;
-  border-bottom: 0px !important;
+  color: var(--selected-color);
+  background-color: var(--selected-background-color);
+  border: 1px solid var(--selected-color);
+  border-bottom: 0px;
   bottom: -1px;
 `;
 
 const disabledTab = css`
-  color: var(--disabled-color) !important;
-  background-color: var(--disabled-background-color) !important;
-  //border-color: var(--disabled-background-color) !important;
+  color: var(--disabled-color);
+  background-color: var(--disabled-background-color);
   cursor: default;
 `;
 
@@ -59,12 +58,19 @@ const selectedTabPanel = css`
   display: block;
   color: var(--color);
   background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-top: 0;
+  border-radius: 0 0 5px 5px;
+  padding: 4px;
 `;
 
 type TabProps = {
+  disabledContent?: () => JSX.Element;
+  defaultIndex?: number;
+  jumpToFirstEnabled?: boolean;
   tabs: {
-    header: JSX.Element;
-    content: JSX.Element;
+    header: (props: { disabled?: boolean }) => JSX.Element;
+    content: (props: { disabled?: boolean }) => JSX.Element;
     disabled?: boolean;
   }[];
   style?: {
@@ -100,12 +106,28 @@ const defaultStyle = {
   height: 'inherit',
 };
 
-//TODO jump to first enabled? or keep panel disabled??
-//TODO what to show when none is enabled if jump to first enabled?? validate at least one enabled??
-function Tab({ tabs, style }: TabProps): JSX.Element {
+function Tab({
+  disabledContent: DisabledContent,
+  defaultIndex,
+  jumpToFirstEnabled,
+  tabs,
+  style,
+}: TabProps): JSX.Element {
   const appliedStyle = { ...defaultStyle, ...style };
+
+  if (jumpToFirstEnabled) {
+    const firstEnabled = tabs.findIndex((tab) => !tab.disabled);
+    defaultIndex = firstEnabled === -1 ? defaultIndex : firstEnabled;
+  }
+
+  console.log('defaultIndex', defaultIndex);
+
   return (
-    <Tabs style={{ width: appliedStyle.width, height: appliedStyle.height }} forceRenderTabPanel={true}>
+    <Tabs
+      style={{ width: appliedStyle.width, height: appliedStyle.height }}
+      forceRenderTabPanel={true}
+      defaultIndex={defaultIndex}
+    >
       <TabList
         className={tabList}
         style={{
@@ -128,7 +150,7 @@ function Tab({ tabs, style }: TabProps): JSX.Element {
               ['--disabled-background-color' as never]: appliedStyle.disabledTabBackgroundColor,
             }}
           >
-            {tab.header}
+            <tab.header disabled={tab.disabled} />
           </ReactTab>
         ))}
       </TabList>
@@ -144,10 +166,11 @@ function Tab({ tabs, style }: TabProps): JSX.Element {
             ['--background-color' as never]: tab.disabled
               ? appliedStyle.disabledPanelBackgroundColor
               : appliedStyle.panelBackgroundColor,
+            ['--border-color' as never]: appliedStyle.selectedTabColor,
           }}
           forceRender={true}
         >
-          {tab.content}
+          {tab.disabled && DisabledContent ? <DisabledContent /> : <tab.content disabled={tab.disabled} />}
         </TabPanel>
       ))}
     </Tabs>
