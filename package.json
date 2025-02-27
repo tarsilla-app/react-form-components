@@ -1,5 +1,5 @@
 {
-  "name": "@tarsilla/form-components",
+  "name": "@tarsilla/react-form-components",
   "version": "0.0.0",
   "engines": {
     "node": ">=22"
