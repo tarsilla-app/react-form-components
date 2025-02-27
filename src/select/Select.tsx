@@ -9,4 +9,4 @@ const Select: FormComponent<string | string[], ReactSelectProps<Option>> = {
   render: (props) => <ReactSelect {...props} />,
 };
 
-export { Select, SelectProps };
+export { Select, type SelectProps };

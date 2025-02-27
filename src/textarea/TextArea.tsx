@@ -9,4 +9,4 @@ const TextArea: FormComponent<string, ReactTextAreaProps> = {
   render: ({ onChange, ...rest }) => <ReactAreaText onChange={({ target: { value } }) => onChange(value)} {...rest} />,
 };
 
-export { TextArea, TextAreaProps };
+export { TextArea, type TextAreaProps };

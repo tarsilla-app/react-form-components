@@ -9,4 +9,4 @@ const Text: FormComponent<string, ReactTextProps> = {
   render: ({ onChange, ...rest }) => <ReactText onChange={({ target: { value } }) => onChange(value)} {...rest} />,
 };
 
-export { Text, TextProps };
+export { Text, type TextProps };
