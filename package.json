@@ -1,6 +1,6 @@
 {
   "name": "@tarsilla/form-components",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "engines": {
     "node": ">=22"
   },
@@ -9,26 +9,25 @@
     ".": {
       "types": "./lib/index.d.ts",
       "require": "./lib/index.cjs",
+      "import": "./lib/index.mjs",
       "default": "./lib/index.mjs"
     },
     "./select": {
       "types": "./lib/select/index.d.ts",
       "require": "./lib/select/index.cjs",
+      "import": "./lib/select/index.mjs",
       "default": "./lib/select/index.mjs"
-    },
-    "./tab": {
-      "types": "./lib/tab/index.d.ts",
-      "require": "./lib/tab/index.cjs",
-      "default": "./lib/tab/index.mjs"
     },
     "./text": {
       "types": "./lib/text/index.d.ts",
       "require": "./lib/text/index.cjs",
+      "import": "./lib/text/index.mjs",
       "default": "./lib/text/index.mjs"
     },
     "./textarea": {
       "types": "./lib/textarea/index.d.ts",
       "require": "./lib/textarea/index.cjs",
+      "import": "./lib/textarea/index.mjs",
       "default": "./lib/textarea/index.mjs"
     },
     "./package.json": "./package.json"
@@ -45,47 +44,33 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "clean": "rm -rf ./lib",
-    "build": "npm run clean && rollup -c --bundleConfigAsCjs",
+    "build": "npm run clean && rollup -c",
     "prepub": "npm run build",
     "pub": "npm publish --access public",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "prepare": "husky"
   },
   "peerDependencies": {
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "^18.3.5",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "react": "^18",
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^3.2.4",
-    "@rollup/plugin-terser": "^0.4.4",
-    "@rollup/plugin-typescript": "^12.1.2",
-    "@storybook/addon-essentials": "^8.5.4",
-    "@storybook/addon-interactions": "^8.5.4",
-    "@storybook/blocks": "^8.5.4",
-    "@storybook/react": "^8.5.4",
-    "@storybook/react-vite": "^8.5.4",
-    "@storybook/test": "^8.5.4",
-    "@tarsilla/eslint-config": "^0.0.37",
-    "rollup": "^4.34.6",
-    "rollup-plugin-dts": "^6.1.1",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-tsconfig-paths": "^1.5.2",
-    "storybook": "^8.5.4",
-    "typescript": "^5.7.3",
-    "vite": "^6.1.0"
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.3",
+    "@tarsilla/eslint-config": "^0.0.60",
+    "@tarsilla/rollup-config": "^0.0.7",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^9.1.7",
+    "semantic-release": "^24.2.3",
+    "typescript": "^5.7.3"
   },
   "dependencies": {
-    "@emotion/css": "^11.13.5",
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
-    "debounce": "^2.2.0",
-    "react-hook-form": "^7.54.2",
-    "react-icons": "^5.4.0",
-    "react-select": "^5.10.0",
-    "react-tabs": "^6.1.0",
-    "react-toastify": "^11.0.3"
+    "@tarsilla/react-components": "^0.0.18"
   }
 }
