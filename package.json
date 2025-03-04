@@ -15,17 +15,23 @@
       "import": "./lib/index.mjs",
       "default": "./lib/index.mjs"
     },
+    "./input": {
+      "types": "./lib/input/index.d.ts",
+      "require": "./lib/input/index.cjs",
+      "import": "./lib/input/index.mjs",
+      "default": "./lib/input/index.mjs"
+    },
+    "./label": {
+      "types": "./lib/label/index.d.ts",
+      "require": "./lib/label/index.cjs",
+      "import": "./lib/label/index.mjs",
+      "default": "./lib/label/index.mjs"
+    },
     "./select": {
       "types": "./lib/select/index.d.ts",
       "require": "./lib/select/index.cjs",
       "import": "./lib/select/index.mjs",
       "default": "./lib/select/index.mjs"
-    },
-    "./text": {
-      "types": "./lib/text/index.d.ts",
-      "require": "./lib/text/index.cjs",
-      "import": "./lib/text/index.mjs",
-      "default": "./lib/text/index.mjs"
     },
     "./textarea": {
       "types": "./lib/textarea/index.d.ts",
@@ -59,7 +65,7 @@
     "react-dom": "^18"
   },
   "dependencies": {
-    "@tarsilla/react-components": "^0.0.18"
+    "@tarsilla/react-components": "^0.0.22"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.7.1",
@@ -74,6 +80,6 @@
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^9.1.7",
     "semantic-release": "^24.2.3",
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.2"
   }
 }

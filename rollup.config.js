@@ -6,42 +6,38 @@ export default [
       '@types': ['./src/types/index.ts'],
     },
     external: [
+      '@tarsilla/react-components/input',
+      '@tarsilla/react-components/label',
       '@tarsilla/react-components/select',
-      '@tarsilla/react-components/text',
       '@tarsilla/react-components/textarea',
     ],
+  }),
+  ...rollupReactConfig({
+    folder: 'input',
+    paths: {
+      '@types': ['./src/types/index.ts'],
+    },
+    external: ['@tarsilla/react-components/input'],
+  }),
+  ...rollupReactConfig({
+    folder: 'label',
+    paths: {
+      '@types': ['./src/types/index.ts'],
+    },
+    external: ['@tarsilla/react-components/label'],
   }),
   ...rollupReactConfig({
     folder: 'select',
     paths: {
       '@types': ['./src/types/index.ts'],
     },
-    external: [
-      '@tarsilla/react-components/select',
-      '@tarsilla/react-components/text',
-      '@tarsilla/react-components/textarea',
-    ],
-  }),
-  ...rollupReactConfig({
-    folder: 'text',
-    paths: {
-      '@types': ['./src/types/index.ts'],
-    },
-    external: [
-      '@tarsilla/react-components/select',
-      '@tarsilla/react-components/text',
-      '@tarsilla/react-components/textarea',
-    ],
+    external: ['@tarsilla/react-components/select'],
   }),
   ...rollupReactConfig({
     folder: 'textarea',
     paths: {
       '@types': ['./src/types/index.ts'],
     },
-    external: [
-      '@tarsilla/react-components/select',
-      '@tarsilla/react-components/text',
-      '@tarsilla/react-components/textarea',
-    ],
+    external: ['@tarsilla/react-components/textarea'],
   }),
 ];
