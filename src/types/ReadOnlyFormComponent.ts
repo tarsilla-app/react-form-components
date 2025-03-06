@@ -1,3 +1,5 @@
+import { JSX } from 'react';
+
 import { UnknownObject } from './UnknownObject.js';
 
 type ReadOnlyFormComponentProps<ComponentValue, ComponentProps> = {

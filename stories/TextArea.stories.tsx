@@ -32,11 +32,7 @@ const meta: Meta<typeof TextAreaStory> = {
   tags: ['autodocs'],
   argTypes: {},
   args: {},
-  decorators: [
-    (Story: any, { args }: any): JSX.Element => {
-      return <Story args={args} />;
-    },
-  ],
+  decorators: [],
 };
 
 export default meta;
@@ -44,14 +40,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    value: 'Hello, World!',
-    debounceWait: undefined,
+    value: 'Tarsilla',
   },
 };
 
 export const Debounce: Story = {
   args: {
-    value: 'Hello, World!',
+    value: 'Tarsilla',
     debounceWait: 2000,
   },
 };

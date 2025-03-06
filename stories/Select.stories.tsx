@@ -31,12 +31,34 @@ const meta: Meta<typeof SelectStory> = {
   },
   tags: ['autodocs'],
   argTypes: {},
-  args: {},
-  decorators: [
-    (Story: any, { args }: any): JSX.Element => {
-      return <Story args={args} />;
-    },
-  ],
+  args: {
+    options: [
+      {
+        label: 'option 1',
+        value: '1',
+      },
+      {
+        label: 'option 2',
+        value: '2',
+        isDisabled: true,
+      },
+      {
+        label: 'Group',
+        options: [
+          {
+            label: 'option 3',
+            value: '3',
+          },
+          {
+            label: 'option 4',
+            value: '4',
+            isDisabled: true,
+          },
+        ],
+      },
+    ],
+  },
+  decorators: [],
 };
 
 export default meta;
@@ -44,63 +66,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    options: [
-      {
-        label: 'option 1',
-        value: '1',
-      },
-      {
-        label: 'option 2',
-        value: '2',
-        isDisabled: true,
-      },
-      {
-        label: 'Group',
-        options: [
-          {
-            label: 'option 3',
-            value: '3',
-          },
-          {
-            label: 'option 4',
-            value: '4',
-            isDisabled: true,
-          },
-        ],
-      },
-    ],
     value: '1',
-    debounceWait: undefined,
   },
 };
 
 export const Debounce: Story = {
   args: {
-    options: [
-      {
-        label: 'option 1',
-        value: '1',
-      },
-      {
-        label: 'option 2',
-        value: '2',
-        isDisabled: true,
-      },
-      {
-        label: 'Group',
-        options: [
-          {
-            label: 'option 3',
-            value: '3',
-          },
-          {
-            label: 'option 4',
-            value: '4',
-            isDisabled: true,
-          },
-        ],
-      },
-    ],
     value: '1',
     debounceWait: 2000,
   },

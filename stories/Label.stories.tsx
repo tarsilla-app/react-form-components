@@ -23,11 +23,7 @@ const meta: Meta<typeof LabelStory> = {
   tags: ['autodocs'],
   argTypes: {},
   args: {},
-  decorators: [
-    (Story: any, { args }: any): JSX.Element => {
-      return <Story args={args} />;
-    },
-  ],
+  decorators: [],
 };
 
 export default meta;
@@ -35,14 +31,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    value: 'Hello, World!',
-    debounceWait: undefined,
-  },
-};
-
-export const Debounce: Story = {
-  args: {
-    value: 'Hello, World!',
-    debounceWait: 2000,
+    value: 'Tarsilla',
   },
 };
