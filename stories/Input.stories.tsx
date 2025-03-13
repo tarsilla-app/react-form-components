@@ -1,24 +1,21 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-
-import { useState } from 'react';
+import { JSX, useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Input } from '../src/input/index.js';
+import { Input, InputProps } from '../src/input/index.js';
 
-const InputStory = ({ value, ...rest }: any) => {
+const InputStory = ({ onChange, value, ...rest }: InputProps): JSX.Element => {
   const [_value, _setValue] = useState(value);
 
   return (
     <Input.render
       onChange={(value) => {
         _setValue(value);
+        onChange(value);
         console.log(value);
       }}
-      {...rest}
       value={_value}
+      {...rest}
     />
   );
 };

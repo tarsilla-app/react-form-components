@@ -1,14 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-
-import { useState } from 'react';
+import { JSX, useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Label } from '../src/label/index.js';
+import { Label, LabelProps } from '../src/label/index.js';
 
-const LabelStory = ({ value, ...rest }: any) => {
+const LabelStory = ({ value, ...rest }: LabelProps): JSX.Element => {
   const [_value, _setValue] = useState(value);
 
   return <Label.render {...rest} value={_value} />;

@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type UnknownObject = Record<string, any>;
+type UnknownObject = Record<string, unknown>;
 
 export { type UnknownObject };

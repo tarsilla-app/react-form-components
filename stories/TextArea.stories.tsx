@@ -1,20 +1,17 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-
-import { useState } from 'react';
+import { JSX, useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { TextArea } from '../src/textarea/index.js';
+import { TextArea, TextAreaProps } from '../src/textarea/index.js';
 
-const TextAreaStory = ({ value, ...rest }: any) => {
+const TextAreaStory = ({ onChange, value, ...rest }: TextAreaProps): JSX.Element => {
   const [_value, _setValue] = useState(value);
 
   return (
     <TextArea.render
       onChange={(value) => {
         _setValue(value);
+        onChange(value);
         console.log(value);
       }}
       {...rest}

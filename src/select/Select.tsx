@@ -2,7 +2,7 @@ import { Option, Select as ReactSelect, SelectProps as ReactSelectProps } from '
 
 import { FormComponent, FormComponentProps } from '@types';
 
-type SelectProps = FormComponentProps<string, ReactSelectProps<Option>>;
+type SelectProps = FormComponentProps<string | string[], ReactSelectProps<Option>>;
 
 const Select: FormComponent<string | string[], ReactSelectProps<Option>> = {
   id: 'select',
