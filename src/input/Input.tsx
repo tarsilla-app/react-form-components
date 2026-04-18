@@ -7,7 +7,14 @@ type InputProps = FormComponentProps<string, ReactInputProps>;
 const Input: FormComponent<string, ReactInputProps> = {
   id: 'input',
   render: ({ onChange, ...rest }) => {
-    return <ReactInput onChange={({ target: { value } }) => onChange(value)} {...rest} />;
+    return (
+      <ReactInput
+        onChange={({ target: { value } }) => {
+          onChange(value);
+        }}
+        {...rest}
+      />
+    );
   },
 };
 

@@ -1,25 +1,23 @@
-import { JSX, useState } from 'react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import { JSX } from 'react';
 
 import { Label, LabelProps } from '../src/label/index.js';
 
 const LabelStory = ({ value, ...rest }: LabelProps): JSX.Element => {
-  const [_value, _setValue] = useState(value);
-
-  return <Label.render {...rest} value={_value} />;
+  return <Label.render {...rest} value={value} />;
 };
 
 const meta: Meta<typeof LabelStory> = {
-  title: 'Label',
+  args: {},
+  argTypes: {},
   component: LabelStory,
+  decorators: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {},
-  args: {},
-  decorators: [],
+  title: 'Label',
 };
 
 export default meta;

@@ -6,7 +6,14 @@ type TextAreaProps = FormComponentProps<string, ReactTextAreaProps>;
 
 const TextArea: FormComponent<string, ReactTextAreaProps> = {
   id: 'textarea',
-  render: ({ onChange, ...rest }) => <ReactAreaText onChange={({ target: { value } }) => onChange(value)} {...rest} />,
+  render: ({ onChange, ...rest }) => (
+    <ReactAreaText
+      onChange={({ target: { value } }) => {
+        onChange(value);
+      }}
+      {...rest}
+    />
+  ),
 };
 
 export { TextArea, type TextAreaProps };

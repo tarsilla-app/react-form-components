@@ -1,35 +1,34 @@
-import { JSX, useState } from 'react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import { JSX, useState } from 'react';
 
 import { Input, InputProps } from '../src/input/index.js';
 
-const InputStory = ({ onChange, value, ...rest }: InputProps): JSX.Element => {
-  const [_value, _setValue] = useState(value);
+const InputStory = ({ onChange, value: _value, ...rest }: InputProps): JSX.Element => {
+  const [value, setValue] = useState(_value);
 
   return (
     <Input.render
       onChange={(value) => {
-        _setValue(value);
+        setValue(value);
         onChange(value);
-        console.log(value);
       }}
-      value={_value}
+      value={value}
       {...rest}
     />
   );
 };
 
 const meta: Meta<typeof InputStory> = {
-  title: 'Input',
+  args: {},
+  argTypes: {},
   component: InputStory,
+  decorators: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {},
-  args: {},
-  decorators: [],
+  title: 'Input',
 };
 
 export default meta;
@@ -43,7 +42,7 @@ export const Default: Story = {
 
 export const Debounce: Story = {
   args: {
-    value: 'Tarsilla',
     debounceWait: 2000,
+    value: 'Tarsilla',
   },
 };

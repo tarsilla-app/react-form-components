@@ -1,35 +1,34 @@
-import { JSX, useState } from 'react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import { JSX, useState } from 'react';
 
 import { TextArea, TextAreaProps } from '../src/textarea/index.js';
 
-const TextAreaStory = ({ onChange, value, ...rest }: TextAreaProps): JSX.Element => {
-  const [_value, _setValue] = useState(value);
+const TextAreaStory = ({ onChange, value: _value, ...rest }: TextAreaProps): JSX.Element => {
+  const [value, setValue] = useState(_value);
 
   return (
     <TextArea.render
       onChange={(value) => {
-        _setValue(value);
+        setValue(value);
         onChange(value);
-        console.log(value);
       }}
       {...rest}
-      value={_value}
+      value={value}
     />
   );
 };
 
 const meta: Meta<typeof TextAreaStory> = {
-  title: 'TextArea',
+  args: {},
+  argTypes: {},
   component: TextAreaStory,
+  decorators: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {},
-  args: {},
-  decorators: [],
+  title: 'TextArea',
 };
 
 export default meta;
@@ -43,7 +42,7 @@ export const Default: Story = {
 
 export const Debounce: Story = {
   args: {
-    value: 'Tarsilla',
     debounceWait: 2000,
+    value: 'Tarsilla',
   },
 };
