@@ -1,21 +1,17 @@
-import { resolve } from 'path';
-import { fileURLToPath } from 'url';
+import { resolve } from 'node:path';
 
 import { defineConfig } from 'vitest/config';
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
-
 export default defineConfig({
   resolve: {
-    alias: [
-      {
-        find: /^@types$/,
-        replacement: resolve(__dirname, 'src/types/index.ts'),
-      },
-    ],
+    alias: {
+      '@types': resolve(__dirname, './src/types/index.ts'),
+    },
   },
   test: {
     coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html'],
       thresholds: {
         branches: 100,
         functions: 100,
